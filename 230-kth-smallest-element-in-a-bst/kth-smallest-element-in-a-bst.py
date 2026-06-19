@@ -5,9 +5,7 @@
 #         self.left = left
 #         self.right = right
 
-import heapq as hq
 class Solution:
-    elements = []
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
         in_order_list = self.in_order(root)
         return in_order_list[k-1]
