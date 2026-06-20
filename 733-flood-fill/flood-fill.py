@@ -10,24 +10,28 @@ class Solution:
             image[x][y] = color
             visited.add((x, y))
 
-            for adjacent in self.see_adjacent(image, x, y, original_color):
-                if adjacent not in visited:
-                    queue.append(adjacent)
+            self.add_adjacent(image, x, y, original_color, visited, queue)
         
         return image
 
 
-    def see_adjacent(self, image: List[List[int]], x: int, y: int, original_color: int) -> List[Tuple[int]]:
+    def add_adjacent(self, image: List[List[int]], x: int, y: int, original_color: int, visited: set, queue):
         N = len(image)
         M = len(image[0])
-        adjacents = []
         if x > 0 and image[x-1][y] == original_color:
-            adjacents.append((x-1,y))
+            adjacent = (x-1,y)
+            if adjacent not in visited:
+                queue.append(adjacent)
         if y > 0 and image[x][y-1] == original_color:
-            adjacents.append((x,y-1))
+            adjacent = (x,y-1)
+            if adjacent not in visited:
+                queue.append(adjacent)
         if x < N - 1 and image[x+1][y] == original_color:
-            adjacents.append((x+1,y))
+            adjacent = (x+1,y)
+            if adjacent not in visited:
+                queue.append(adjacent)
         if y < M - 1 and image[x][y+1] == original_color:
-            adjacents.append((x,y+1))
-        return adjacents
+            adjacent = (x,y+1)
+            if adjacent not in visited:
+                queue.append(adjacent)
         
