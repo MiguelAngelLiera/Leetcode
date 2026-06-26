@@ -14,8 +14,6 @@ class Solution:
         for j in range(1, M+1):
             if s2[j-1] == s3[j-1] and mem[0][j-1]:
                 mem[0][j] = 1
-
-        print(mem)
         
         for i in range(1, N+1):
             for j in range(1, M+1):
