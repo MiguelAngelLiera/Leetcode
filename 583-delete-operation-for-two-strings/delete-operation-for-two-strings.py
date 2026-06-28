@@ -17,6 +17,4 @@ class Solution:
                 else:
                     mem[i][j] = min( mem[i-1][j], mem[i][j - 1]) + 1
 
-        print(mem)
-
         return mem[-1][-1]
