@@ -1,6 +1,6 @@
 class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
-        z = self._reverse(s)
+        z = s[::-1]
         N = len(s)
         mem = [[0] * (N + 1) for _ in range(N + 1)]
 
@@ -13,9 +13,3 @@ class Solution:
 
         return mem[-1][-1]
     
-
-    def _reverse(self, s: str) -> str:
-        z = ""
-        for i in range(len(s)-1, -1, -1):
-            z += s[i]
-        return z
