@@ -1,7 +1,6 @@
 class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
         log_dict, digit_logs = self.create_dict(logs)
-        print(log_dict, digit_logs)
         log_keys = sorted(list(log_dict.keys()))
         #log_keys = self.merge_sort(log_keys)
         return [log_dict[k] for k in log_keys] + digit_logs
@@ -24,7 +23,6 @@ class Solution:
     #             fst = fst + lst[j:]
     #             break
     #         else:
-    #             #print(fst[i], lst[j])
     #             if fst[i] > lst[j]:
     #                 fst = fst[:i] + [lst[j]] + fst[i:]
     #                 j += 1
