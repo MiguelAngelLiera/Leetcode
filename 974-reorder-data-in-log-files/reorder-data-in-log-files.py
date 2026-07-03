@@ -1,33 +1,33 @@
 class Solution:
     def reorderLogFiles(self, logs: List[str]) -> List[str]:
         log_dict, digit_logs = self.create_dict(logs)
-        log_keys = sorted(list(log_dict.keys()))
-        #log_keys = self.merge_sort(log_keys)
+        log_keys = list(log_dict.keys())
+        log_keys = self.merge_sort(log_keys)
         return [log_dict[k] for k in log_keys] + digit_logs
 
-    # def merge_sort(self, keys: Tuple[int, str, str]) -> List[str]:
-    #     N = len(keys)
-    #     if N < 2:
-    #         return keys
-    #     if N == 2:
-    #         keys = [keys[0], keys[1]] if keys[0] <= keys[1] else [keys[1], keys[0]]
-    #         return keys
+    def merge_sort(self, keys: Tuple[int, str, str]) -> List[str]:
+        N = len(keys)
+        if N < 2:
+            return keys
+        if N == 2:
+            return [keys[0], keys[1]] if keys[0] <= keys[1] else [keys[1], keys[0]]
         
-    #     fst = self.merge_sort(keys[:N//2])
-    #     lst = self.merge_sort(keys[N//2:])
+        fst = self.merge_sort(keys[:N//2])
+        lst = self.merge_sort(keys[N//2:])
 
-    #     i = 0
-    #     j = 0
-    #     while j < len(lst):
-    #         if i == len(fst):
-    #             fst = fst + lst[j:]
-    #             break
-    #         else:
-    #             if fst[i] > lst[j]:
-    #                 fst = fst[:i] + [lst[j]] + fst[i:]
-    #                 j += 1
-    #             i += 1
-    #     return keys
+
+        i = 0
+        j = 0
+        while j < len(lst):
+            if i == len(fst):
+                fst = fst + lst[j:]
+                break
+            else:
+                if fst[i] > lst[j]:
+                    fst = fst[:i] + [lst[j]] + fst[i:]
+                    j += 1
+                i += 1
+        return fst
 
     def create_dict(self, logs: List[str]) -> Dict[Tuple[int, str, str], str]:
         digits = set([str(i) for i in range(0, 10)])
