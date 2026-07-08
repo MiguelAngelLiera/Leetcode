@@ -18,7 +18,6 @@ class Solution:
         prev = None
         curr = head
 
-        print(valid_iterations)
         for it in range(valid_iterations):
             fst = curr
 
